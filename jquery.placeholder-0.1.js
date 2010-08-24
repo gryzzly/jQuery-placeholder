@@ -1,23 +1,35 @@
 (function($) {
-	jQuery.fn.placeholder = function(options) {
-		settings = jQuery.extend({
-			onClass: 'focused',
-			offClass: false,
-			placeholderSupport: (function(){
-				return 'placeholder' in document.createElement('input');
-			})()
-		}, options);
-		return this.each(function() {
-			if(!settings['placeholderSupport']) this.defaultValue = $(this).attr('placeholder');
-			$(this).bind('focus', function(){
-				if(!settings['placeholderSupport'] && ($(this).val() == this.defaultValue)) $(this).val('');
-				if(settings['onClass']) $(this).addClass(settings['onClass']);
-				if(settings['offClass']) $(this).removeClass(settings['offClass']);
-			}).bind('blur', function(){
-				if(!settings['placeholderSupport'] && !$(this).val().length) $(this).val(this.defaultValue);
-				if(settings['onClass']) $(this).removeClass(settings['onClass']);
-				if(settings['offClass']) $(this).addClass(settings['offClass']);
-			});
-		});
-	};
+  jQuery.fn.placeholder = function(options) {
+    settings = jQuery.extend({
+      // let's see if browser supports placeholder natively
+      placeholderSupport: (function(){
+        return 'placeholder' in document.createElement('input');
+      })()
+  }, options);
+  
+  return this.each(function() {
+    
+    // add placeholder support
+    if (!settings.placeholderSupport) {
+      var $this = $(this);
+      
+      // this puts [placeholder] text as input's value
+      this.defaultValue = $this.attr('placeholder');
+
+      $this.bind({
+        'focus': function(){
+          if ($this.val() == this.defaultValue) { 
+            $this.val('');
+          }
+        },
+        'blur': function(){
+          if (!$this.val().length) {
+            $this.val(this.defaultValue);
+          }
+        }
+      });
+    }
+    
+  });
+};
 })(jQuery);
