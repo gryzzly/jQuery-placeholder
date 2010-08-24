@@ -7,10 +7,10 @@
       })()
   }, options);
   
-  return this.each(function() {
+  // add placeholder support
+  if (!settings.placeholderSupport) {
+    return this.each(function() {
     
-    // add placeholder support
-    if (!settings.placeholderSupport) {
       var $this = $(this);
       
       // this puts [placeholder] text as input's value
@@ -28,8 +28,7 @@
           }
         }
       });
-    }
-    
-  });
+    });
+  }
 };
 })(jQuery);
