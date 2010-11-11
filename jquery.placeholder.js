@@ -7,7 +7,7 @@ jQuery.fn.placeholder = function(options) {
       var $this = $(this);
       
       // this puts [placeholder] text as input's value
-      this.defaultValue = $this.attr('placeholder');
+      this.defaultValue = this.value = $this.attr('placeholder');
 
       $this.bind({
         'focus': function(){
