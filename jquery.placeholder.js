@@ -1,7 +1,7 @@
 (function($) {
 jQuery.fn.placeholder = function(options) {
   // add placeholder support
-  if (!(return 'placeholder' in document.createElement('input'))) {
+  if (!('placeholder' in document.createElement('input'))) {
     return this.each(function() {
     
       var $this = $(this);
