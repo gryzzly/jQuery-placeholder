@@ -1,14 +1,7 @@
 (function($) {
-  jQuery.fn.placeholder = function(options) {
-    settings = jQuery.extend({
-      // let's see if browser supports placeholder natively
-      placeholderSupport: (function(){
-        return 'placeholder' in document.createElement('input');
-      })()
-  }, options);
-  
+jQuery.fn.placeholder = function(options) {
   // add placeholder support
-  if (!settings.placeholderSupport) {
+  if (!(return 'placeholder' in document.createElement('input'))) {
     return this.each(function() {
     
       var $this = $(this);
