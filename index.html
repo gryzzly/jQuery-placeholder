@@ -57,6 +57,10 @@
 &lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"&gt;&lt;/script&gt;
 &lt;script src="path/to/jquery.placeholder.js"&gt;&lt;/script&gt;
 &lt;script&gt;
+/* 
+you'd need to put this in $(document).ready(function(){ //here }); wrapper,
+if you aren't placing your scripts before closing </body> tag 
+*/
 $('input[placeholder], textarea[placeholder]').placeholder();
 &lt;/script&gt;
 </pre>
